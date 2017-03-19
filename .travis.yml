@@ -3,4 +3,9 @@ node_js:
 - '5'
 - '6'
 - 'stable'
-script: npm run ci
+dist: trusty
+script:
+- set -e
+- npm config set forgiven-webcomponents:browser firefox
+- npm run init
+- xvfb-run npm run build

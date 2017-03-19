@@ -1,0 +1,19 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+
+<dom-module id="my-button">
+  <template>
+    <button id="button" on-tap="_tapButton">[[text]]</button>
+  </template>
+  <script>
+    Polymer({
+      is: 'my-button',
+      properties: {
+        text: String
+      },
+      _tapButton: function() {
+        console.log('tap');
+        this.fire('button-click', this.text);
+      }
+    });
+  </script>
+</dom-module>

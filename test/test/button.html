@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>my-button test</title>
+
+    <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../web-component-tester/browser.js"></script>
+    <script src="../../../forgiven/browser.js"></script>
+    <script src="../../../forgiven-mocha/browser.js"></script>
+    <script src="../../../es6-promise/es6-promise.auto.js"></script>
+    <script src="../../browser.js"></script>
+
+    <link rel="import" href="../src/button.html">
+  </head>
+  <body>
+    <test-fixture id="some text">
+      <template is="dom-template">
+        <my-button text="[[text]]"></my-button>
+      </template>
+    </test-fixture>
+    <script>
+      chai.should();
+      var given = forgiven.create(forgiven.ui.mocha, {
+        fixture: forgiven.plugins.webcomponents,
+      });
+
+      const context = {};
+      let myButton;
+      let event;
+      const events = [];
+      let promise;
+
+      given.a.fixture.as('myButton').with('some text', {
+        text: 'hello'
+      })
+      .and(function() {this.myButton.record.event('button-click').as('event')})
+      .and(function() {this.myButton.record.events('button-click').as('events')})
+      .and(function() {this.myButton.promise.event('button-click').as('promise')})
+      .and(function() {this.myButton.$.button.click()})
+      .then(function() {this.myButton.$.button.textContent.should.eql('hello')})
+      .and(function() {this.event.detail.should.eql('hello')})
+      .and(function() {this.events[0].detail.should.eql('hello')})
+      .and(function() {
+        return this.promise.then(function(event) {
+          event.detail.should.eql('hello');
+        });
+      })
+      .end();
+
+      given.a.fixture.as(context, 'myButton').with('some text', {
+        text: 'hello'
+      })
+      .and(function() {context.myButton.record.event('button-click').as(context, 'event')})
+      .and(function() {context.myButton.record.events('button-click').as(context, 'events')})
+      .and(function() {context.myButton.promise.event('button-click').as(context, 'promise')})
+      .and(function() {context.myButton.$.button.click()})
+      .then(function() {context.myButton.$.button.textContent.should.eql('hello')})
+      .and(function() {context.event.detail.should.eql('hello')})
+      .and(function() {context.events[0].detail.should.eql('hello')})
+      .and(function() {
+        return context.promise.then(function(event) {
+          event.detail.should.eql('hello');
+        });
+      })
+      .end();
+
+      given.a.fixture.as(function(fixture) {
+        myButton = fixture;
+      }).with('some text', {
+        text: 'hello'
+      })
+      .and(function() {myButton.record.event('button-click').as(function(e) {
+        event = e;
+      })})
+      .and(function() {myButton.record.events('button-click').as(function(e) {
+        events.push(e);
+      })})
+      .and(function() {myButton.promise.event('button-click').as(function(p) {
+        promise = p;
+      })})
+      .and(function() {myButton.$.button.click()})
+      .then(function() {myButton.$.button.textContent.should.eql('hello')})
+      .and(function() {event.detail.should.eql('hello')})
+      .and(function() {events[0].detail.should.eql('hello')})
+      .and(function() {
+        return promise.then(function(event) {
+          event.detail.should.eql('hello');
+        });
+      })
+      .end();
+    </script>
+  </body>
+</html>

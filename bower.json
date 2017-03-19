@@ -1,0 +1,24 @@
+{
+  "name": "forgiven-webcomponents",
+  "description": "Forgiven extensions for web-component-tester test-fixtures",
+  "main": "browser.js",
+  "authors": [
+    "Peter Halliday <pghalliday@gmail.com> (http://pghalliday.com)"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/pghalliday/forgiven-webcomponents",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "polymer": "Polymer/polymer#^1.8.1",
+    "web-component-tester": "^5.0.1",
+    "forgiven": "^0.0.4",
+    "forgiven-mocha": "^0.0.3",
+    "es6-promise": "^4.0.5"
+  }
+}
