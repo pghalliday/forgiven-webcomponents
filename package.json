@@ -1,6 +1,6 @@
 {
   "name": "forgiven-webcomponents",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Forgiven extensions for web-component-tester test-fixtures",
   "main": "lib/index.js",
   "config": {
