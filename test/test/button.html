@@ -27,11 +27,11 @@
         fixture: forgiven.plugins.webcomponents,
       });
 
-      const context = {};
-      let myButton;
-      let event;
-      const events = [];
-      let promise;
+      var myContext = {};
+      var myButton;
+      var myEvent;
+      var myEvents = [];
+      var myPromise;
 
       given.a.fixture.as('myButton').with('some text', {
         text: 'hello'
@@ -50,18 +50,18 @@
       })
       .end();
 
-      given.a.fixture.as(context, 'myButton').with('some text', {
+      given.a.fixture.as(myContext, 'myButton').with('some text', {
         text: 'hello'
       })
-      .and(function() {context.myButton.record.event('button-click').as(context, 'event')})
-      .and(function() {context.myButton.record.events('button-click').as(context, 'events')})
-      .and(function() {context.myButton.promise.event('button-click').as(context, 'promise')})
-      .and(function() {context.myButton.$.button.click()})
-      .then(function() {context.myButton.$.button.textContent.should.eql('hello')})
-      .and(function() {context.event.detail.should.eql('hello')})
-      .and(function() {context.events[0].detail.should.eql('hello')})
+      .and(function() {myContext.myButton.record.event('button-click').as(myContext, 'event')})
+      .and(function() {myContext.myButton.record.events('button-click').as(myContext, 'events')})
+      .and(function() {myContext.myButton.promise.event('button-click').as(myContext, 'promise')})
+      .and(function() {myContext.myButton.$.button.click()})
+      .then(function() {myContext.myButton.$.button.textContent.should.eql('hello')})
+      .and(function() {myContext.event.detail.should.eql('hello')})
+      .and(function() {myContext.events[0].detail.should.eql('hello')})
       .and(function() {
-        return context.promise.then(function(event) {
+        return myContext.promise.then(function(event) {
           event.detail.should.eql('hello');
         });
       })
@@ -73,20 +73,20 @@
         text: 'hello'
       })
       .and(function() {myButton.record.event('button-click').as(function(e) {
-        event = e;
+        myEvent = e;
       })})
       .and(function() {myButton.record.events('button-click').as(function(e) {
-        events.push(e);
+        myEvents.push(e);
       })})
       .and(function() {myButton.promise.event('button-click').as(function(p) {
-        promise = p;
+        myPromise = p;
       })})
       .and(function() {myButton.$.button.click()})
       .then(function() {myButton.$.button.textContent.should.eql('hello')})
-      .and(function() {event.detail.should.eql('hello')})
-      .and(function() {events[0].detail.should.eql('hello')})
+      .and(function() {myEvent.detail.should.eql('hello')})
+      .and(function() {myEvents[0].detail.should.eql('hello')})
       .and(function() {
-        return promise.then(function(event) {
+        return myPromise.then(function(event) {
           event.detail.should.eql('hello');
         });
       })

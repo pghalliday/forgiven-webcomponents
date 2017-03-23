@@ -1,9 +1,8 @@
 # forgiven-webcomponents
 
 [![Build Status](https://travis-ci.org/pghalliday/forgiven-webcomponents.svg?branch=master)](https://travis-ci.org/pghalliday/forgiven-webcomponents)
-[![Build status](https://ci.appveyor.com/api/projects/status/8jaac5m0tgfwf283/branch/master?svg=true)](https://ci.appveyor.com/project/pghalliday/forgiven-webcomponents/branch/master)
 
-[Forgiven](https://www.npmjs.com/package/forgiven) extensions for [web-component-tester](https://github.com/Polymer/web-component-tester) test-fixtures
+[Forgiven](https://github.com/pghalliday/forgiven) extensions for [web-component-tester](https://github.com/Polymer/web-component-tester) test-fixtures
 
 ## Usage
 
@@ -67,6 +66,7 @@ bower install --save-dev forgiven forgiven-mocha forgiven-webcomponents
 
 Run unit tests and build before pushing/opening a pull request.
 
+- `npm run init` - install bower dependencies for tests
 - `npm test` - lint and test
 - `npm start` - watch and build, etc with alarmist
 - `npm run build` - run tests then build

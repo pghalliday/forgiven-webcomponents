@@ -17,7 +17,7 @@
   "devDependencies": {
     "polymer": "Polymer/polymer#^1.8.1",
     "web-component-tester": "^5.0.1",
-    "forgiven": "^0.0.4",
+    "forgiven": "^0.0.6",
     "forgiven-mocha": "^0.0.3",
     "es6-promise": "^4.0.5"
   }

@@ -4,11 +4,11 @@
   "description": "Forgiven extensions for web-component-tester test-fixtures",
   "main": "lib/index.js",
   "config": {
-    "browser": "firefox"
+    "skipPlugin": "sauce"
   },
   "scripts": {
     "cmd:lint": "eslint .",
-    "cmd:test": "cross-conf-env wct --expanded --local $npm_package_config_browser test/test",
+    "cmd:test": "cross-conf-env wct --expanded --skip-plugin $npm_package_config_skipPlugin test/test",
     "cmd:build": "rimraf lib && babel src --out-dir lib",
     "cmd:browser": "webpack",
     "test": "run-s cmd:lint cmd:test",
@@ -21,7 +21,7 @@
     "watch": "chokidar '+(src|test)/**/*' -c 'npm run -s build'",
     "prepublish": "run-s cmd:build cmd:browser",
     "init": "bower install",
-    "wct:start": "cross-conf-env wct --expanded --local $npm_package_config_browser --persistent test/test"
+    "wct:start": "cross-conf-env wct --expanded --skip-plugin $npm_package_config_skipPlugin --persistent test/test"
   },
   "repository": {
     "type": "git",

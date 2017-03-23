@@ -1,6 +1,7 @@
 /* globals module */
 module.exports = {
-  suites: ['test/test/src/'],
+  suites: ['test/test/'],
+  testTimeout: 5 * 60 * 1000,
   plugins: {
     local: {
       browsers: ['chrome'],
